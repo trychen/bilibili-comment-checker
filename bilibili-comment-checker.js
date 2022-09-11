@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.4
+// @version      1.5
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -18,7 +18,7 @@ $(function () {
     // 在这里配置要检查的成分
     const checkers = [
         {
-            displayName: "原神玩家",
+            displayName: "原神",
             displayIcon: "https://i2.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@240w_240h_1c_1s.jpg",
             keywords: ["互动抽奖 #原神", "米哈游", "#米哈游#", "#miHoYo#"],
             followings: [401742377] // 原神官方号的 UID
