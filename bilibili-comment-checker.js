@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.0
+// @version      1.1
 // @author       xulaupuz,trychen
 // @description  B站评论区自动标注动态成分，默认包括原神玩家和王者荣耀玩家
 // @match        https://www.bilibili.com/video/*
@@ -18,7 +18,8 @@ $(function () {
         {
             displayName: "原神玩家",
             displayIcon: "https://i2.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@240w_240h_1c_1s.jpg",
-            keywords: ["互动抽奖 #原神", "米哈游", "#米哈游#", "#miHoYo#"]
+            keywords: ["互动抽奖 #原神", "米哈游", "#米哈游#", "#miHoYo#"],
+            followings: [401742377] // 原神官方号的 UID
         },
         {
             displayName: "王者荣耀",
@@ -29,6 +30,7 @@ $(function () {
 
     // 空间动态api
     const spaceApiUrl = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid='
+    const followingApiUrl = 'https://api.bilibili.com/x/relation/followings?vmid='
 
     const checked = {}
     const checking = {}
@@ -66,6 +68,7 @@ $(function () {
                 checking[userID].push(element)
         } else {
             checking[userID] = [element]
+
             // 获取最近动态
             GM_xmlhttpRequest({
                 method: "get",
@@ -76,39 +79,76 @@ $(function () {
                 },
                 onload: res => {
                     if(res.status === 200) {
-                        let st = JSON.stringify(JSON.parse(res.response).data.items)
+                        // 获取关注列表
+                        GM_xmlhttpRequest({
+                            method: "get",
+                            url: followingApiUrl + userID,
+                            data: '',
+                            headers:  {
+                                'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
+                            },
+                            onload: followingRes => {
+                                if(followingRes.status === 200) {
+                                    let followingData = JSON.parse(followingRes.response)
+                                    let following = followingData.code == 0 ? followingData.data.list.map(it => it.mid) : []
 
-                        let found = []
-                        for(let setting of checkers) {
-                            if (setting.keywords.find(keyword => st.includes(keyword))) {
-                                found.push(setting)
-                            }
-                        }
+                                    let st = JSON.stringify(JSON.parse(res.response).data.items)
 
-                        if (found.length > 0) {
+                                    let found = []
+                                    for(let setting of checkers) {
+                                        if (setting.keywords.find(keyword => st.includes(keyword))) {
+                                            if (found.indexOf(setting) < 0)
+                                                found.push(setting)
+                                            continue;
+                                        }
 
-                            if (!printed) {
-                                console.log(JSON.parse(res.response).data)
-                                printed = true
-                            }
+                                        // 检查关注列表
+                                        if (setting.followings)
+                                            for(let mid of setting.followings) {
+                                                if (following.indexOf(mid) >= 0) {
+                                                    if (found.indexOf(setting) < 0)
+                                                        found.push(setting)
+                                                    continue;
+                                                }
+                                            }
+                                    }
+
+                                    // 添加标签
+                                    if (found.length > 0) {
+                                        if (!printed) {
+                                            console.log(JSON.parse(res.response).data)
+                                            printed = true
+                                        }
 
 
-                            console.log(`检测到 ${name} ${userID} 的成分为 `, found.map(it => it.displayName))
-                            checked[userID] = found
+                                        console.log(`检测到 ${name} ${userID} 的成分为 `, found.map(it => it.displayName))
+                                        checked[userID] = found
 
-
-
-                            for (let element of checking[userID]) {
-                                for(let setting of found) {
-                                    installComposition(userID, element, setting)
+                                        for (let element of checking[userID]) {
+                                            for(let setting of found) {
+                                                installComposition(userID, element, setting)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    console.log(`检测 ${name} ${userID} 的关注列表失败`, followingRes)
                                 }
-                            }
-                        }
+
+                                delete checking[userID]
+                            },
+                            onerror: err => {
+                                console.log(`检测 ${name} ${userID} 的成分最近动态失败`, err)
+
+                                delete checking[userID]
+                            },
+                        })
+
+
                     } else {
                         console.log(`检测 ${name} ${userID} 的成分失败`, res)
-                    }
 
                     delete checking[userID]
+                    }
                 },
                 onerror: err => {
                     console.log(`检测 ${name} ${userID} 的成分失败`, err)
