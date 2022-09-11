@@ -11,3 +11,7 @@ B站评论区自动标注成分油猴脚本，主要为原神玩家识别。
 
 ## 效果
 ![使用效果](https://files.catbox.moe/91mv7d.png)
+
+## 安装
+* [从 Greasy Fork 安装](https://greasyfork.org/zh-CN/scripts/451164-b站成分检测器)
+* [从 Github Raw 安装](https://raw.githubusercontent.com/trychen/bilibili-comment-checker/main/bilibili-comment-checker.js)
