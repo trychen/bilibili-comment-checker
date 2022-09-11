@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.8
+// @version      1.9
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -11,7 +11,7 @@
 // @icon         https://static.hdslb.com/images/favicon.ico
 // @connect      bilibili.com
 // @grant        GM_xmlhttpRequest
-// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js
+// @require      https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js
 // ==/UserScript==
 
 $(function () {
