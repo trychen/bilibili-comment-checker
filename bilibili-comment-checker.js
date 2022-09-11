@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.7
+// @version      1.8
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -156,9 +156,11 @@ $(function () {
                                                 installComposition(userID, element, setting)
                                             }
                                         }
+                                        loadingElement.parent().remove()
+                                    } else {
+                                        loadingElement.text('无')
                                     }
 
-                                    loadingElement.text('无')
                                 } else {
                                     console.log(`检测 ${name} ${userID} 的关注列表失败`, followingRes)
 
@@ -201,6 +203,7 @@ $(function () {
   width: fit-content;
   background: #00AEEC26;
   border-radius: 10px;
+  margin: -6px 0;
   margin: 0 5px;
   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
 }
