@@ -5,6 +5,7 @@
 // @description  B站评论区自动标注动态成分，默认包括原神玩家和王者荣耀玩家
 // @match        https://www.bilibili.com/video/*
 // @match        https://www.bilibili.com/read/*
+// @match        https://t.bilibili.com/*
 // @icon         https://static.hdslb.com/images/favicon.ico
 // @connect      bilibili.com
 // @grant        GM_xmlhttpRequest
