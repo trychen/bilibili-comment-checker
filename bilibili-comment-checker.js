@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.6
+// @version      1.7
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -53,7 +53,7 @@ $(function () {
 
         node.on('click', function () {
             node.find(".composition-name").text("检查中...")
-            checkComposition(element, node)
+            checkComposition(element, node.find(".composition-name"))
         })
 
         element.after(node)
