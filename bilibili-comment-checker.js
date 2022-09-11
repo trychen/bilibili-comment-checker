@@ -2,6 +2,8 @@
 // @name         B站成分检测器
 // @version      1.1
 // @author       xulaupuz,trychen
+// @namespace    trychen.com
+// @license      GPLv3
 // @description  B站评论区自动标注动态成分，默认包括原神玩家和王者荣耀玩家
 // @match        https://www.bilibili.com/video/*
 // @match        https://www.bilibili.com/read/*
