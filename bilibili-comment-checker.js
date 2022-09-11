@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.5
+// @version      1.6
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -39,11 +39,25 @@ $(function () {
     var printed = false
 
     // 监听用户ID元素出现
-    waitForKeyElements(".user-name", checkComposition);
-    waitForKeyElements(".sub-user-name", checkComposition);
-    waitForKeyElements(".user .name", checkComposition);
+    waitForKeyElements(".user-name", installCheckButton);
+    waitForKeyElements(".sub-user-name", installCheckButton);
+    waitForKeyElements(".user .name", installCheckButton);
 
     console.log("开启B站用户成分检查器...")
+
+    // 添加检查按钮
+    function installCheckButton(element) {
+        let node = $(`<div style="display: inline;" class="composition-checkable"><div class="composition-badge">
+  <a class="composition-name">检查</a>
+</div></div>`)
+
+        node.on('click', function () {
+            node.find(".composition-name").text("检查中...")
+            checkComposition(element, node)
+        })
+
+        element.after(node)
+    }
 
     // 添加标签
     function installComposition(id, element, setting) {
@@ -56,7 +70,7 @@ $(function () {
     }
 
     // 检查标签
-    function checkComposition(element) {
+    function checkComposition(element, loadingElement) {
         // 用户ID
         let userID = element.attr("data-user-id") || element.attr("data-usercard-mid")
         // 用户名
@@ -143,8 +157,12 @@ $(function () {
                                             }
                                         }
                                     }
+
+                                    loadingElement.text('无')
                                 } else {
                                     console.log(`检测 ${name} ${userID} 的关注列表失败`, followingRes)
+
+                                    loadingElement.text('失败')
                                 }
 
                                 delete checking[userID]
@@ -152,6 +170,7 @@ $(function () {
                             onerror: err => {
                                 console.log(`检测 ${name} ${userID} 的成分最近动态失败`, err)
 
+                                loadingElement.text('失败')
                                 delete checking[userID]
                             },
                         })
@@ -159,13 +178,14 @@ $(function () {
 
                     } else {
                         console.log(`检测 ${name} ${userID} 的成分失败`, res)
+                        loadingElement.text('失败')
 
-                    delete checking[userID]
+                        delete checking[userID]
                     }
                 },
                 onerror: err => {
                     console.log(`检测 ${name} ${userID} 的成分失败`, err)
-
+                    loadingElement.text('失败')
                     delete checking[userID]
                 },
             });
@@ -182,17 +202,14 @@ $(function () {
   background: #00AEEC26;
   border-radius: 10px;
   margin: 0 5px;
-
   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
 }
-
 .composition-name {
   line-height: 13px;
   font-size: 13px;
   color: #00AEEC;
   padding: 2px 8px;
 }
-
 .composition-icon {
   width: 25px;
   height: 25px;
@@ -215,19 +232,15 @@ $(function () {
 
     /*--- waitForKeyElements():  A utility function, for Greasemonkey scripts,
     that detects and handles AJAXed content.
-
     Usage example:
-
         waitForKeyElements (
             "div.comments"
             , commentCallbackFunction
         );
-
         //--- Page-specific function to do what we want when the node is found.
         function commentCallbackFunction (jNode) {
             jNode.text ("This comment changed by waitForKeyElements().");
         }
-
     IMPORTANT: This function requires your script to have loaded jQuery.
     */
     function waitForKeyElements(selectorTxt, actionFunction, bWaitOnce, iframeSelector) {
@@ -248,7 +261,7 @@ $(function () {
                 if (!alreadyFound) {
                     //--- Call the payload function.
                     var cancelFound = actionFunction (jThis);
-                    if (cancelFound) btargetsFound   = false;
+                    if (cancelFound) btargetsFound = false;
                     else jThis.data ('alreadyFound', true);
                 }
             } );
