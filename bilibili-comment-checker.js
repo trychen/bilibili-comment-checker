@@ -38,12 +38,14 @@ $(function () {
     const checking = {}
     var printed = false
 
+    // 监听用户ID元素出现
     waitForKeyElements(".user-name", checkComposition);
     waitForKeyElements(".sub-user-name", checkComposition);
     waitForKeyElements(".user .name", checkComposition);
 
     console.log("开启B站用户成分检查器...")
 
+    // 添加标签
     function installComposition(id, element, setting) {
         let node = $(`<div style="display: inline;"><div class="composition-badge">
   <a class="composition-name">${setting.displayName}</a>
@@ -53,6 +55,7 @@ $(function () {
         element.after(node)
     }
 
+    // 检查标签
     function checkComposition(element) {
         // 用户ID
         let userID = element.attr("data-user-id") || element.attr("data-usercard-mid")
@@ -91,18 +94,24 @@ $(function () {
                             },
                             onload: followingRes => {
                                 if(followingRes.status === 200) {
+                                    // 解析关注列表
                                     let followingData = JSON.parse(followingRes.response)
+                                    // 可能无权限
                                     let following = followingData.code == 0 ? followingData.data.list.map(it => it.mid) : []
 
+                                    // 解析并拼接动态数据
                                     let st = JSON.stringify(JSON.parse(res.response).data.items)
 
+                                    // 找到的匹配内容
                                     let found = []
                                     for(let setting of checkers) {
-                                        if (setting.keywords.find(keyword => st.includes(keyword))) {
-                                            if (found.indexOf(setting) < 0)
-                                                found.push(setting)
-                                            continue;
-                                        }
+                                        // 检查动态内容
+                                        if (setting.keywords)
+                                            if (setting.keywords.find(keyword => st.includes(keyword))) {
+                                                if (found.indexOf(setting) < 0)
+                                                    found.push(setting)
+                                                continue;
+                                            }
 
                                         // 检查关注列表
                                         if (setting.followings)
@@ -123,9 +132,11 @@ $(function () {
                                         }
 
 
+                                        // 输出日志
                                         console.log(`检测到 ${name} ${userID} 的成分为 `, found.map(it => it.displayName))
                                         checked[userID] = found
 
+                                        // 给所有用到的地方添加标签
                                         for (let element of checking[userID]) {
                                             for(let setting of found) {
                                                 installComposition(userID, element, setting)
@@ -161,6 +172,7 @@ $(function () {
         }
     }
 
+    // 添加标签样式
     addGlobalStyle(`
 .composition-badge {
   display: inline-flex;
