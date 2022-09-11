@@ -48,7 +48,7 @@ $(function () {
     // 添加检查按钮
     function installCheckButton(element) {
         let node = $(`<div style="display: inline;" class="composition-checkable"><div class="composition-badge">
-  <a class="composition-name">检查</a>
+  <a class="composition-name">检查成分</a>
 </div></div>`)
 
         node.on('click', function () {
