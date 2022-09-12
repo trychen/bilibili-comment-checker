@@ -14,4 +14,25 @@ B站评论区自动标注成分油猴脚本，主要为原神玩家识别。
 
 ## 安装
 * [从 Greasy Fork 安装](https://greasyfork.org/zh-CN/scripts/451164-b站成分检测器)
-* [从 Github Raw 安装](https://raw.githubusercontent.com/trychen/bilibili-comment-checker/main/bilibili-comment-checker.js)
+* [从 Github Raw 安装](https://raw.githubusercontent.com/trychen/bilibili-comment-checker/main/bilibili-comment-checker.user.js)
+
+## 配置
+基础配置:
+```javascript
+    // 在这里配置要检查的成分
+    const checkers = [
+        {
+            displayName: "原神",
+            displayIcon: "https://i2.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@240w_240h_1c_1s.jpg",
+            keywords: ["互动抽奖 #原神", "米哈游", "#米哈游#", "#miHoYo#"],
+            followings: [401742377] // 原神官方号的 UID
+        },
+        {
+            displayName: "王者荣耀",
+            displayIcon: "https://i2.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@240w_240h_1c_1s.jpg",
+            keywords: ["互动抽奖 #王者荣耀"]
+        }
+    ]
+```
+
+可以自行添加内容， `keywords` 表示要识别的关键字，`followings` 表示检查有没有关注特定的用户uid。
