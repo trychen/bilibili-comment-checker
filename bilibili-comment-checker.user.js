@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.11
+// @version      1.12
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -72,6 +72,7 @@ $(function () {
     waitForKeyElements(".user-name", installCheckButton);
     waitForKeyElements(".sub-user-name", installCheckButton);
     waitForKeyElements(".user .name", installCheckButton);
+    waitForKeyElements(".h-name", installCheckButton);
 
     console.log("开启B站用户成分检查器...")
 
@@ -263,7 +264,9 @@ $(function () {
 
     function request(option) {
         return new Promise((resolve, reject) => {
-            GM_xmlhttpRequest({
+            let requestFunction = GM_xmlhttpRequest ? GM_xmlhttpRequest : GM.xmlHttpRequest
+
+            requestFunction({
                 method: "get",
                 headers: {
                     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
