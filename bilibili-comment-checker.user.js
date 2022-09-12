@@ -48,7 +48,7 @@ $(function () {
         {
             displayName: "Asoul",
             displayIcon: "https://i2.hdslb.com/bfs/face/43b21998da8e7e210340333f46d4e2ae7ec046eb.jpg@240w_240h_1c_1s.jpg",
-            keywords: ["@A-SOUL_Official"],
+            keywords: ["@A-SOUL_Official", "#A_SOUL#"],
             followings: [
                 703007996, // Asoul
                 547510303, // Asoul二创计画
@@ -72,7 +72,7 @@ $(function () {
     waitForKeyElements(".user-name", installCheckButton);
     waitForKeyElements(".sub-user-name", installCheckButton);
     waitForKeyElements(".user .name", installCheckButton);
-    waitForKeyElements(".h-name", installCheckButton);
+    waitForKeyElements("#h-name", installCheckButton);
 
     console.log("开启B站用户成分检查器...")
 
