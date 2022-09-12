@@ -16,10 +16,6 @@ B站评论区自动标注成分油猴脚本，主要为原神玩家识别。
 * [从 Greasy Fork 安装](https://greasyfork.org/zh-CN/scripts/451164-b站成分检测器)
 * [从 Github Raw 安装](https://raw.githubusercontent.com/trychen/bilibili-comment-checker/main/bilibili-comment-checker.user.js)
 
-## Roadmap
-即将更新 2.0 版本使用机器学习进行识别
-![ML](https://files.catbox.moe/lvgyp5.png)
-
 ## 配置
 基础配置:
 ```javascript
@@ -40,3 +36,15 @@ B站评论区自动标注成分油猴脚本，主要为原神玩家识别。
 ```
 
 可以自行添加内容， `keywords` 表示要识别的关键字，`followings` 表示检查有没有关注特定的用户uid。
+
+## 声明
+本项目提供了一个解决`异步动态加载内容`的注入案例，关键函数 `waitForKeyElements` 来自 [BrockA](https://gist.github.com/BrockA/2625891) 在11年前写的代码，至今仍然基本可用！
+
+
+脚本仅供学习参考，请勿用于侵害他人权益。
+
+
+## Roadmap
+即将更新 2.0 版本使用机器学习进行识别
+![ML](https://files.catbox.moe/lvgyp5.png)
+
