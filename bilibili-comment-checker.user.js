@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.12
+// @version      1.13
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
@@ -78,13 +78,13 @@ $(function () {
 
     // 添加检查按钮
     function installCheckButton(element) {
-        let node = $(`<div style="display: inline;" class="composition-checkable"><div class="composition-badge">
-  <a class="composition-name">查</a>
+        let node = $(`<div style="display: inline;" class="composition-checkable"><div class="composition-badge-control">
+  <a class="composition-name-control">${searchIcon}</a>
 </div></div>`)
 
         node.on('click', function () {
-            node.find(".composition-name").text("检查中...")
-            checkComposition(element, node.find(".composition-name"))
+            node.find(".composition-name-control").text("检查中...")
+            checkComposition(element, node.find(".composition-name-control"))
         })
 
         element.after(node)
@@ -223,6 +223,8 @@ $(function () {
         }
     }
 
+    const searchIcon = `<svg width="12" height="12" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0632C16.15 16.1279 16.0958 16.1818 16.0525 16.2249C15.7707 16.473 15.4456 16.624 15.1854 16.3652L11.6848 12.8815C10.4709 13.8198 8.97529 14.3267 7.44714 14.3267C3.62134 14.3267 0.5 11.2314 0.5 7.41337C0.5 3.60616 3.6105 0.5 7.44714 0.5C11.2729 0.5 14.3943 3.59538 14.3943 7.41337C14.3943 8.98802 13.8524 10.5087 12.8661 11.7383L16.3451 15.2003ZM2.13647 7.4026C2.13647 10.3146 4.52083 12.6766 7.43624 12.6766C10.3517 12.6766 12.736 10.3146 12.736 7.4026C12.736 4.49058 10.3517 2.1286 7.43624 2.1286C4.50999 2.1286 2.13647 4.50136 2.13647 7.4026Z" fill="currentColor"></path></svg>`
+
     // 添加标签样式
     addGlobalStyle(`
 .composition-badge {
@@ -236,12 +238,14 @@ $(function () {
   margin: 0 5px;
   font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
 }
+
 .composition-name {
   line-height: 13px;
   font-size: 13px;
-  color: #00AEEC;
+  color: #00AEEC !important;
   padding: 2px 8px;
 }
+
 .composition-icon {
   width: 25px;
   height: 25px;
@@ -249,6 +253,25 @@ $(function () {
   border: 2px solid white;
   margin: -6px;
   margin-right: 5px;
+}
+
+.composition-badge-control {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    background: #00000008 !important;
+    border-radius: 10px;
+    margin: -6px 0;
+    margin: 0 5px;
+    font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue, Microsoft YaHei, sans-serif;
+}
+
+.composition-name-control {
+    line-height: 13px;
+    font-size: 12px;
+    color: #00000050 !important;
+    padding: 2px 8px;
 }
     `)
 
