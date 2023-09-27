@@ -7,6 +7,7 @@
 // @description  B站评论区自动标注成分，支持动态和关注识别，默认包括原神玩家和王者荣耀玩家
 // @match        https://www.bilibili.com/video/*
 // @match        https://www.bilibili.com/read/*
+// @match        https://www.bilibili.com/bangumi/*
 // @match        https://t.bilibili.com/*
 // @icon         https://static.hdslb.com/images/favicon.ico
 // @connect      bilibili.com
