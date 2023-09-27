@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站成分检测器
-// @version      1.13
+// @version      1.14
 // @author       xulaupuz,trychen
 // @namespace    trychen.com
 // @license      GPLv3
