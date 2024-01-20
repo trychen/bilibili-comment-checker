@@ -58,7 +58,19 @@ $(function () {
                 672346917, // 向晚大魔王
                 672353429, // 贝拉kira
             ]
-        }
+        },
+        {
+            displayName: "移动端音游",
+            displayIcon: "https://i0.hdslb.com/bfs/face/b3dd022d03c32a91be673d195a9f60c46217c406.jpg@240w_240h_1c_1s.jpg",
+            keywords: ["韵律源点", "臀","phi","你线","arc","musedash","喵斯","peropero","hasuhasu","lowiro","616","guy","鸽游","malody","4k","iidx um","iidx ultimate mobile","rzline"],
+            followings: [
+                414149787, // Phigros官方
+                13241939, // Malody公式娘
+                404145357, // 韵律源点Arcaea
+                269396974, // MuseDash_喵斯快跑
+                29153009, // EK鲁比
+            ]
+        },
     ]
 
     // 空间动态api
