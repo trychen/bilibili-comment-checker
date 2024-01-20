@@ -21,7 +21,7 @@ $(function () {
         {
             displayName: "原神",
             displayIcon: "https://i2.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@240w_240h_1c_1s.jpg",
-            keywords: ["互动抽奖 #原神", "#米哈游#", "#miHoYo#"],
+            keywords: ["互动抽奖 #原神", "#米哈游#", "#miHoYo#","原石"],
             followings: [401742377] // 原神官方号的 UID
         },
         {
@@ -33,7 +33,7 @@ $(function () {
         {
             displayName: "王者荣耀",
             displayIcon: "https://i2.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@240w_240h_1c_1s.jpg",
-            keywords: ["互动抽奖 #王者荣耀"],
+            keywords: ["互动抽奖 #王者荣耀","超标"，"巅峰赛"],
             followings: [57863910, 392836434] // “王者荣耀” & “哔哩哔哩王者荣耀赛事”
         },
         {
@@ -74,7 +74,19 @@ $(function () {
         {
             displayName: "街机端音游",
             displayIcon: "https://i1.hdslb.com/bfs/face/bac9333174cdc5a2246c4d30a645c0ca59487e77.jpg@240w_240h_1c_1s_.jpg",
-            keywords: ["舞萌", "iidx","maimai","beatmania","乌蒙","舞立方","神曲，我懂得欣赏","神曲 我懂得欣赏","神曲我懂得欣赏","zaquva","Ryu","sdvx","ddr","pop'n","破盆","皆传","konami","bemani","sega","sbga","华立","胜骅"],
+            keywords: ["舞萌", "iidx","maimai","beatmania","乌蒙","舞立方","神曲，我懂得欣赏","神曲 我懂得欣赏","神曲我懂得欣赏","zaquva","Ryu","dj mass","sdvx","ddr","pop'n","破盆","皆传","konami","bemani","sega","sbga","华立","胜骅"],
+        },
+        {
+            displayName: "动物园",
+            displayIcon: "https://i0.hdslb.com/bfs/face/b3dd022d03c32a91be673d195a9f60c46217c406.jpg@240w_240h_1c_1s.jpg",
+            keywords: ["哈姆", "djgun","karasu","电棍","otto","棍哥","炫狗","炫家军","奥利安费","allin","wc!冰","哈比下","山泥若","火星包","包桑","斗鱼12306"],
+            followings: [
+                2088874781, // DJGun
+                336404166, // DJBieji
+                628845081, // 电棍otto
+                7761588, // _Karasu_
+                299013902, // 炫神_
+            ]
         },
 
 
