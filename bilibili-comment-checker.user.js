@@ -78,7 +78,7 @@ $(function () {
         },
         {
             displayName: "动物园",
-            displayIcon: "https://i0.hdslb.com/bfs/face/b3dd022d03c32a91be673d195a9f60c46217c406.jpg@240w_240h_1c_1s.jpg",
+            displayIcon: "https://i0.hdslb.com/bfs/face/ecf4c55dad9446deed5cf67e5906f71fbbd6c032.jpg@240w_240h_1c_1s_.jpg",
             keywords: ["哈姆", "djgun","karasu","电棍","otto","棍哥","炫狗","炫家军","奥利安费","allin","wc!冰","哈比下","山泥若","火星包","包桑","斗鱼12306"],
             followings: [
                 2088874781, // DJGun
