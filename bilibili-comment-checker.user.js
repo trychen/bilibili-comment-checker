@@ -71,6 +71,13 @@ $(function () {
                 29153009, // EK鲁比
             ]
         },
+        {
+            displayName: "街机端音游",
+            displayIcon: "https://i1.hdslb.com/bfs/face/bac9333174cdc5a2246c4d30a645c0ca59487e77.jpg@240w_240h_1c_1s_.jpg",
+            keywords: ["舞萌", "iidx","maimai","beatmania","乌蒙","舞立方","神曲，我懂得欣赏","神曲 我懂得欣赏","神曲我懂得欣赏","zaquva","Ryu","sdvx","ddr","pop'n","破盆","皆传","konami","bemani","sega","sbga","华立","胜骅"],
+        },
+
+
     ]
 
     // 空间动态api
