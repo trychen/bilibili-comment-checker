@@ -31,6 +31,12 @@ $(function () {
             followings: [27534330] // 崩坏3官方号的 UID
         },
         {
+            displayName: "崩坏星穹铁道",
+            displayIcon: "https://i2.hdslb.com/bfs/face/c27e19b8861be105b9d80b6743756c35027ae736.jpg@240w_240h_1c_1s.jpg",
+            keywords: ["​互动抽奖 #崩坏星穹铁道", "关注并转发本条动态，帕姆将"],
+            followings: [1340190821, 508103429] // 崩坏星穹铁道几个官方号的 UID
+        },
+        {
             displayName: "王者荣耀",
             displayIcon: "https://i2.hdslb.com/bfs/face/effbafff589a27f02148d15bca7e97031a31d772.jpg@240w_240h_1c_1s.jpg",
             keywords: ["互动抽奖 #王者荣耀"],
